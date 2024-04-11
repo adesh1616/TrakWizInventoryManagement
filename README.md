@@ -89,6 +89,15 @@ uvicorn main:app --reload
 
 3. Set up the frontend:
 
+Install node from: https://nodejs.org/en/download
+Install Extension in VS code: npm Intellisense
+
+
+```bash
+Run `npm init react-app <your_module_name>`
+Run `npm install bulma moment`
+```
+
 ```bash
 cd frontend
 npm install
