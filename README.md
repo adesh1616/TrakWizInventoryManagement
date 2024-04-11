@@ -8,6 +8,10 @@ This project is an online platform for managing products, selling them, and gene
 
 ## Features
 
+## Screenshot
+nmain page
+![Screenshot 2024-04-11 130836](https://github.com/adesh1616/TrakWizInventoryManagement/assets/125434369/504960de-e32f-489b-939e-df21e49be6bc)
+
 ### Product Management
 
 - **Add Product**: Users can add new products to the inventory, including product details such as name, description, price, and quantity.
