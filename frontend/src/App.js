@@ -17,7 +17,11 @@ const App = () => {
 
     console.log(data);
   };
-  useEffect(getWelcomeMessage() {},[] ) 
+  useEffect(()=> { getWelcomeMessage(); 
+  }
+  ,
+  []);
+  
   return (
     <div>
       <h1>Hello World</h1>
