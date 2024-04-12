@@ -1,32 +1,24 @@
+import logo from './logo.svg';
+import './App.css';
 
-import React, { useEffect } from "react";
-
-
-const App = () => {
-  const[message, setMessage] = useSatte("");
-
-  const getWelcomeMessage = async () =>{
-    const requestOptions = {
-      method: "GEt",
-      Headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    const response = await fetch("/api", requestOptions);
-    const data = response.json();
-
-    console.log(data);
-  };
-  useEffect(()=> { getWelcomeMessage(); 
-  }
-  ,
-  []);
-  
+function App() {
   return (
-    <div>
-      <h1>Hello World</h1>
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
     </div>
-     
   );
 }
 
