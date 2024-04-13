@@ -11,6 +11,7 @@ This project is an online platform for managing products, selling them, and gene
 ## Screenshot
 nmain page
 ![Screenshot 2024-04-11 130836](https://github.com/adesh1616/TrakWizInventoryManagement/assets/125434369/504960de-e32f-489b-939e-df21e49be6bc)
+![Screenshot 2024-04-13 201327](https://github.com/adesh1616/TrakWizInventoryManagement/assets/125434369/f59b6e99-c914-4d46-b85b-29b3d23d65ea)
 
 ### Product Management
 
