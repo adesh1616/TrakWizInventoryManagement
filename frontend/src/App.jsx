@@ -1,54 +1,206 @@
-import React, { useContext, useEffect, useState } from "react";
+// import React, { useState } from 'react';
+// import axios from 'axios';
 
-import Register from "./components/Register";
-import Login from "./components/Login";
-import Header from "./components/Header";
-import Table from "./components/Table";
-import { UserContext } from "./context/UserContext";
+// const App = () => {
+//   const [username, setUsername] = useState('');
+//   const [password, setPassword] = useState('');
+//   const [message, setMessage] = useState('');
+
+//   const register = async () => {
+//     try {
+//       const res = await axios.post('http://127.0.0.1:8000/register/', {
+//         username,
+//         password,
+//       });
+//       setMessage('User registered successfully!');
+//     } catch (err) {
+//       setMessage('Error registering user');
+//     }
+//   };
+
+//   const login = async () => {
+//     try {
+//       const res = await axios.post('http://127.0.0.1:8000/login/', {
+//         username,
+//         password,
+//       });
+//       localStorage.setItem('token', res.data.access_token);
+//       setMessage('User logged in successfully!');
+//     } catch (err) {
+//       setMessage('Error logging in');
+//     }
+//   };
+
+//   const getProtected = async () => {
+//     try {
+//       const token = localStorage.getItem('token');
+//       const res = await axios.get('http://127.0.0.1:8000/protected/', {
+//         headers: { Authorization: `Bearer ${token}` },
+//       });
+//       setMessage(res.data.message);
+//     } catch (err) {
+//       setMessage('Error accessing protected route');
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <input
+//         type="text"
+//         placeholder="Username"
+//         onChange={(e) => setUsername(e.target.value)}
+//       />
+//       <input
+//         type="password"
+//         placeholder="Password"
+//         onChange={(e) => setPassword(e.target.value)}
+//       />
+//       <button onClick={register}>Register</button>
+//       <button onClick={login}>Login</button>
+//       <button onClick={getProtected}>Access Protected Route</button>
+//       <p>{message}</p>
+//     </div>
+//   );
+// };
+
+// export default App;
+
+
+import React, { useState } from 'react';
+import axios from 'axios';
 
 const App = () => {
-  const [message, setMessage] = useState("");
-  const [token] = useContext(UserContext);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
 
-  const getWelcomeMessage = async () => {
-    const requestOptions = {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    const response = await fetch("/api", requestOptions);
-    const data = await response.json();
-
-    if (!response.ok) {
-      console.log("something messed up");
-    } else {
-      setMessage(data.message);
+  const register = async () => {
+    try {
+      const res = await axios.post('http://127.0.0.1:8000/register/', {
+        username,
+        password,
+      });
+      setMessage('User registered successfully!');
+    } catch (err) {
+      setMessage('Error registering user');
     }
   };
 
-  useEffect(() => {
-    getWelcomeMessage();
-  }, []);
+  const login = async () => {
+    try {
+      const res = await axios.post('http://127.0.0.1:8000/login/', {
+        username,
+        password,
+      });
+      localStorage.setItem('token', res.data.access_token);
+      setMessage('User logged in successfully!');
+    } catch (err) {
+      setMessage('Error logging in');
+    }
+  };
+
+  const getProtected = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const res = await axios.get('http://127.0.0.1:8000/protected/', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setMessage(res.data.message);
+    } catch (err) {
+      setMessage('Error accessing protected route');
+    }
+  };
 
   return (
-    <>
-      <Header title={message} />
-      <div className="columns">
-        <div className="column"></div>
-        <div className="column m-5 is-two-thirds">
-          {!token ? (
-            <div className="columns">
-              <Register /> <Login />
-            </div>
-          ) : (
-            <Table />
-          )}
-        </div>
-        <div className="column"></div>
-      </div>
-    </>
+    <div>
+      <input
+        type="text"
+        placeholder="Username"
+        onChange={(e) => setUsername(e.target.value)}
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <button onClick={register}>Register</button>
+      
+      <button onClick={login}>Login</button>
+      <button onClick={getProtected}>Access Protected Route</button>
+      <p>{message}</p>
+    </div>
   );
 };
 
 export default App;
+
+
+
+
+// import React, { useState } from 'react';
+// import axios from 'axios';
+
+// const App = () => {
+//   const [username, setUsername] = useState('');
+//   const [password, setPassword] = useState('');
+//   const [message, setMessage] = useState('');
+
+//   const register = async () => {
+//     try {
+//       const res = await axios.post('http://127.0.0.1:8000/register/', {
+//         username,
+//         password,
+//       });
+//       setMessage('User registered successfully!');
+//     } catch (err) {
+//       setMessage('Error registering user');
+//     }
+//   };
+
+//   const login = async () => {
+//     try {
+//       const res = await axios.post('http://127.0.0.1:8000/login/', {
+//         username,
+//         password,
+//       });
+//       localStorage.setItem('token', res.data.access_token);
+//       setMessage('User logged in successfully!');
+//     } catch (err) {
+//       setMessage('Error logging in');
+//     }
+//   };
+
+//   const getProtected = async () => {
+//     try {
+//       const token = localStorage.getItem('token');
+//       const res = await axios.get('http://127.0.0.1:8000/protected/', {
+//         headers: { Authorization: `Bearer ${token}` },
+//       });
+//       setMessage(res.data.message);
+//     } catch (err) {
+//       setMessage('Error accessing protected route');
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <input
+//         type="text"
+//         placeholder="Username"
+//         onChange={(e) => setUsername(e.target.value)}
+//       />
+//       <input
+//         type="password"
+//         placeholder="Password"
+//         onChange={(e) => setPassword(e.target.value)}
+//       />
+//       <button onClick={register}>Register</button>
+//       <button onClick={login}>Login</button>
+//       <button onClick={getProtected}>Access Protected Route</button>
+//       <p>{message}</p>
+//     </div>
+//   );
+// };
+
+// export default App;
+
