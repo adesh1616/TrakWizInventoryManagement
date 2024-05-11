@@ -189,7 +189,7 @@ async def update_lead(
 
 @app.get("/api")
 async def root():
-    return {"message": "Awesome Leads Manager"}
+    return {"message": "TrakWiz Inventory Management"}
 
 if __name__ == "__main__":
     create_tables()
