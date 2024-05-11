@@ -69,10 +69,15 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+const Inventory = () => {
+  // Add your inventory management code here
+};
+
 const App = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const register = async () => {
     try {
@@ -94,6 +99,7 @@ const App = () => {
       });
       localStorage.setItem('token', res.data.access_token);
       setMessage('User logged in successfully!');
+      setIsLoggedIn(true);
     } catch (err) {
       setMessage('Error logging in');
     }
@@ -111,6 +117,10 @@ const App = () => {
     }
   };
 
+  if (isLoggedIn) {
+    return <Inventory />;
+  }
+
   return (
     <div>
       <input
@@ -118,21 +128,24 @@ const App = () => {
         placeholder="Username"
         onChange={(e) => setUsername(e.target.value)}
       />
+      <br /> 
       <input
         type="password"
         placeholder="Password"
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={register}>Register</button>
+      <br /> <button onClick={register}>Register</button>
       
-      <button onClick={login}>Login</button>
-      <button onClick={getProtected}>Access Protected Route</button>
+      <br /> <button onClick={login}>Login</button>
+      <br /> <button onClick={getProtected}>Access Protected Route</button>
       <p>{message}</p>
     </div>
   );
 };
 
 export default App;
+
+
 
 
 
